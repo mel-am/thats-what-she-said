@@ -3,13 +3,24 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { sql } from "@vercel/postgres";
 
+
+
 export default async function Home() {
   const results = await sql`SELECT * FROM quotes`;
     const quotes = results.rows;
-
+// function playAudio() {
+//   const audio = src;
+//   audio.play();
+// }
   return (
     <main>
       <h1>Welcome to The Office</h1>
+      {/* <button onClick={playAudio}>Click</button> */}
+      {/* <audio id="theme_song">
+        <source src="/the_office_theme.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio> */}
+
       <Link href="/posts/all">
         <h2>Enter the office</h2>
       </Link>

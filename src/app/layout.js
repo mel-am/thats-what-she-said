@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
         {children}
-        <footer>
+        {/* <footer>
           <p>&copy; 2024 Thats what she said</p>
-        </footer>
+        </footer> */}
       </body>
     </html>
 );

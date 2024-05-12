@@ -14,7 +14,7 @@ export default function AddQuote() {
 
     await sql`INSERT INTO quotes (quote, title, season, episode, character) values (${quote}, ${title}, ${season}, ${episode}, ${character})`;
 
-    revalidatePath("/");
+    revalidatePath("/posts");
 
     redirect("/");
   }

@@ -24,13 +24,16 @@ export default async function PostListPage({ searchParams }) {
         <Link href="/posts/?sort=asc">Sort ascending</Link> -{" "}
         <Link href="/posts?sort=desc">Sort descending</Link>
       </div>
+      <div id="order_list">
       <ul>
         {posts.map((post) => (
+         
           <li key={post.id}>
-            <span id="order_list">{post.quote} - {post.title}</span>
+            <span>{post.quote} - {post.title}</span>
           </li>
         ))}
-      </ul>
+        </ul>
+        </div>
     </div>
   );
 }

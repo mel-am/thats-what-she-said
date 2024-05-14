@@ -351,3 +351,9 @@ font-weight: 500;
 li {
  list-style: none;
 }
+
+#order_list {
+   background-color: #0057b377;
+   max-width: 50vw;
+
+}

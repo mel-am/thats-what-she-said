@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default function AddQuote() {
   async function handleAddQuote(formData) {
     "use server";
-
+    
     const quote = formData.get("quote");
     const title = formData.get("title");
     const season = formData.get("season");
@@ -14,19 +14,21 @@ export default function AddQuote() {
 
     await sql`INSERT INTO quotes (quote, title, season, episode, character) values (${quote}, ${title}, ${season}, ${episode}, ${character})`;
 
-    revalidatePath("/posts");
+    revalidatePath(`/posts/all`);
 
-    redirect("/");
+    redirect(`/posts/all`);
   }
 
   return (
     <div className="add-quote-container">
-      <h2>Add Quote</h2>
       <form action={handleAddQuote}>
+        <h2>Add Quote</h2>
+
         <label htmlFor="quote">Quote</label>
-        <input name="quote" id="quote" placeholder="Quote" />
-        <label htmlFor="episode">Episode</label>
-        <select name="episode" id="episode">
+        <input name="quote" id="quote" placeholder="Enter quote here" />
+        <label htmlFor="Title">Title</label>
+        <select name="title" id="title">
+          <option value="0">Select an episode title</option>
           <option value="Pilot">Pilot</option>
           <option value="Diversity Day">Diversity Day</option>
           <option value="Health Care">Health Care</option>
@@ -45,19 +47,19 @@ export default function AddQuote() {
           <option value="The Secret">The Secret</option>
           <option value="The Carpet">The Carpet</option>
           <option value="Boys and Girls">Boys and Girls</option>
-          <option value="Valentine's Day">Valentine's Day</option>
+          <option value="Valentine's Day">Valentine&apos;s Day</option>
           <option value="Drug Testing">Drug Testing</option>
           <option value="Casino Night">Casino Night</option>
           <option value="Gay Witch Hunt">Gay Witch Hunt</option>
           <option value="The Convention">The Convention</option>
           <option value="The Coup">The Coup</option>
-          <option value="Grief Counseling">Grief Counseling</option>
+          <option value="Grief Counselling">Grief Counselling</option>
           <option value="Diwali">Diwali</option>
           <option value="Branch Closing">Branch Closing</option>
           <option value="The Merger">The Merger</option>
           <option value="A Benihana Christmas">A Benihana Christmas</option>
           <option value="Back from Vacation">Back from Vacation</option>
-          <option value="Traveling Salesmen">Traveling Salesmen</option>
+          <option value="Travelling Salesmen">Travelling Salesmen</option>
           <option value="The Return">The Return</option>
           <option value="Ben Franklin">Ben Franklin</option>
           <option value="Product Recall">Product Recall</option>
@@ -119,23 +121,23 @@ export default function AddQuote() {
           <option value="Double Date">Double Date</option>
           <option value="Murder">Murder</option>
           <option value="Shareholder Meeting">Shareholder Meeting</option>
-          <option value="Scott's Tots">Scott's Tots</option>
+          <option value="Scott's Tots">Scott&apos;s Tots</option>
           <option value="Secret Santa">Secret Santa</option>
           <option value="The Banker">The Banker</option>
           <option value="Sabre">Sabre</option>
           <option value="Manager and Salesman">Manager and Salesman</option>
           <option value="The Delivery">The Delivery</option>
-          <option value="St. Patrick's Day">St. Patrick's Day</option>
+          <option value="St. Patrick's Day">St. Patrick&apos;s Day</option>
           <option value="New Leads">New Leads</option>
           <option value="Happy Hour">Happy Hour</option>
-          <option value="Secretary's Day">Secretary's Day</option>
+          <option value="Secretary's Day">Secretary&apos;s Day</option>
           <option value="Body Language">Body Language</option>
           <option value="The Cover-Up">The Cover-Up</option>
           <option value="The Chump">The Chump</option>
           <option value="Whistleblower">Whistleblower</option>
           <option value="Nepotism">Nepotism</option>
           <option value="Counselling">Counselling</option>
-          <option value="Andy's Play">Andy's Play</option>
+          <option value="Andy's Play">Andy&apos;s Play</option>
           <option value="Sex Ed">Sex Ed</option>
           <option value="The Sting">The Sting</option>
           <option value="Costume Contest">Costume Contest</option>
@@ -152,7 +154,9 @@ export default function AddQuote() {
           <option value="Todd Packer">Todd Packer</option>
           <option value="Garage Sale">Garage Sale</option>
           <option value="Training Day">Training Day</option>
-          <option value="Michael's Last Dundies">Michael's Last Dundies</option>
+          <option value="Michael's Last Dundies">
+            Michael&apos;s Last Dundies
+          </option>
           <option value="Goodbye, Michael">Goodbye, Michael</option>
           <option value="The Inner Circle">The Inner Circle</option>
           <option value="Dwight K. Schrute, (Acting) Manager">
@@ -165,7 +169,7 @@ export default function AddQuote() {
           <option value="Garden Party">Garden Party</option>
           <option value="Spooked">Spooked</option>
           <option value="Doomsday">Doomsday</option>
-          <option value="Pam's Replacement">Pam's Replacement</option>
+          <option value="Pam's Replacement">Pam&apos;s Replacement</option>
           <option value="Gettysburg">Gettysburg</option>
           <option value="Mrs. California">Mrs. California</option>
           <option value="Christmas Wishes">Christmas Wishes</option>
@@ -186,8 +190,8 @@ export default function AddQuote() {
             Free Family Portrait Studio
           </option>
           <option value="New Guys">New Guys</option>
-          <option value="Roy's Wedding">Roy's Wedding</option>
-          <option value="Andy's Ancestry">Andy's Ancestry</option>
+          <option value="Roy's Wedding">Roy&apos;s Wedding</option>
+          <option value="Andy's Ancestry">Andy&apos;s Ancestry</option>
           <option value="Work Bus">Work Bus</option>
           <option value="Here Comes Treble">Here Comes Treble</option>
           <option value="The Boat">The Boat</option>
@@ -205,11 +209,33 @@ export default function AddQuote() {
           <option value="Promos">Promos</option>
           <option value="Stairmageddon">Stairmageddon</option>
           <option value="Paper Airplane">Paper Airplane</option>
-          <option value="Livin' the Dream">Livin' the Dream</option>
+          <option value="Livin' the Dream">Livin&apos; the Dream</option>
           <option value="A.A.R.M.">A.A.R.M.</option>
           <option value="Finale">Finale</option>
         </select>
-
+        <label htmlFor="character">Character</label>
+        <select name="character" id="character">
+          <option value="0">Select a character</option>
+          <option value="Michael Scott">Michael Scott</option>
+          <option value="Jim Halpert">Jim Halpert</option>
+          <option value="Dwight Schrute">Dwight Schrute</option>
+          <option value="Pam Beesly">Pam Beesly</option>
+          <option value="Angela Martin">Angela Martin</option>
+          <option value="Kevin Malone">Kevin Malone</option>
+          <option value="Stanley Hudson">Stanley Hudson</option>
+          <option value="Phyllis Vance">Phyllis Vance</option>
+          <option value="Meredith Palmer">Meredith Palmer</option>
+          <option value="Creed Bratton">Creed Bratton</option>
+          <option value="Oscar Martinez">Oscar Martinez</option>
+          <option value="Andy Bernard">Andy Bernard</option>
+          <option value="Toby Flenderson">Toby Flenderson</option>
+          <option value="Kelly Kapoor">Kelly Kapoor</option>
+          <option value="Ryan Howard">Ryan Howard</option>
+          <option value="Erin Hannon">Erin Hannon</option>
+          <option value="Darryl Philbin">Darryl Philbin</option>
+          <option value="Jan Levinson">Jan Levinson</option>
+          <option value="Roy Anderson">Roy Anderson</option>
+        </select>
         <button type="submit">Add a Quote</button>
       </form>
     </div>

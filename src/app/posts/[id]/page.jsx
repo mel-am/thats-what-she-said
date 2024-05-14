@@ -15,7 +15,7 @@ export default async function SingleQuote({ params }) {
     await sql`
       UPDATE quotes SET quote = ${newQuote}, title = ${newTitle} WHERE id = ${params.id}
     `;
-    revalidatePath(`/posts/${params.id}`);
+    revalidatePath(`/posts/${params.id}/edit`);
     redirect(`/posts/${params.id}`);
   }
 

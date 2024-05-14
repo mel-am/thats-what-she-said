@@ -8,42 +8,15 @@ import { sql } from "@vercel/postgres";
 export default async function Home() {
   const results = await sql`SELECT * FROM quotes`;
     const quotes = results.rows;
-// function playAudio() {
-//   const audio = src;
-//   audio.play();
-// }
+
   return (
     <main>
-      <h1>Welcome to The Office</h1>
-      {/* <button onClick={playAudio}>Click</button> */}
-      {/* <audio id="theme_song">
-        <source src="/the_office_theme.mp3" type="audio/mpeg" />
+      <h1 id="page-header">That&apos;s what she said</h1>
+      {/* <audio autoPlay>
+        <source src="/public/theme_song.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio> */}
-
-      <Link href="/posts/all">
-        <h2>Enter the office</h2>
-      </Link>
-      {/* <Link href="./posts/all"> Welcome to Dunder Mifflin, Scarnton</Link> */}
-
-      {/* <h1>That is what she said</h1>
-      <div>
-        {quotes.rows.map((quote) => {
-          return (
-            <div key={quote.id}>
-              <h3>{quote.quote}</h3>
-              <p>{quote.title}</p>
-              <Image
-                 src={`/${quote.title}`.png}
-                alt={quote.title}
-                width={300}
-                height={300}
-              />
-            </div>
-          );
-        })}
-      </div>
-      ); */}
+      
     </main>
   );
 }

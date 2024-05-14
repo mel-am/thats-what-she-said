@@ -1,11 +1,3 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-}
-
 
 body {
   max-height: 100vh;
@@ -14,27 +6,38 @@ body {
   padding: 0;
   margin: 0;
   background-image: url("/office_wallapaper.jpg");
-  background-size:cover;
-  background-repeat: no-repeat;
-    display: flex;
-  flex-direction: column;
+  background-size: cover;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+
+
+
+  /* display: flex;
+  flex-direction: column; */
+  font-family:Arial, Helvetica, sans-serif;
+  
 }
 
 a {
   color: whitesmoke;
   text-decoration: none;
+  font: bold;
+display: inline-block;
+justify-content: center;
   
 }
 
 a:hover {
-  color: rgb(67, 191, 53);
+  color: rgb(231, 92, 180);
   text-decoration: none;
 
 }
 
 #all_quotes_table
   main {
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -76,6 +79,7 @@ nav {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  
 }
 
 .links {
@@ -93,6 +97,7 @@ nav {
   nav {
     flex-direction: column;
     align-items: center;
+    font-size: 26px;
   }
 
   .links {
@@ -218,4 +223,131 @@ footer {
 
 #edit_form a:hover {
   text-decoration: underline;
+}
+.quote-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quote-box p {
+  margin: 0;
+  padding: 0;
+}
+
+.quote-box p + p {
+  margin-top: 5px;
+}
+
+#page-header {
+  color: #075eb5;
+  font-size: 60px;
+
+
+}
+#page-button {
+    color: #075eb5;
+  font-size: 60px;
+  align-content: center;
+
+}
+
+#about{
+  color: #2939ae;
+  display: flex;
+  flex-direction: column;
+justify-content: left;
+max-width: 50vw;
+font-size: 20px;
+}
+
+#about button {
+  width: 90%;
+    padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+.quote_section {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  border: 1px solid #213184;
+  padding: 10px;
+  max-width: 60vw;
+  background-color: #075eb582 ;
+}
+
+.quote_section p {
+font-size: 20px;
+display: flex;
+justify-content: center;
+font-weight: 500;
+
+}
+
+#all_quotes_container {
+  margin-top: 20px;
+}
+
+.add-quote-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.add-quote-container form {
+  width: 50%; 
+  max-width: 600px; 
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.add-quote-container form label {
+  display: block;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.add-quote-container form input,
+.add-quote-container form select {
+  width: 90%; 
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px; 
+}
+
+.add-quote-container form button {
+  width: 90%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-quote-container form button:hover {
+  background-color: #0056b3;
+}
+
+.quote_title {
+  font-weight:80px;
+
+}
+
+li {
+ list-style: none;
 }

@@ -1,38 +1,36 @@
-
 import Link from "next/link";
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function PostListPage({ searchParams }) {
+  
+  "use server";
+  
+  const response = await sql`SELECT quote, title FROM quotes`;
+  const posts = response.rows;
+  if (searchParams.sort === "desc") {
+    posts.reverse();
+  }
+  // revalidatePath(`/posts/`);
+  // redirect(`/posts`);
 
-  const PostListPage = ({ searchParams }) => {
-    console.log("searchParams", searchParams);
 
-    const fetchPosts = async () => {
-      const response = await sql`SELECT quote, title FROM quotes`;
-      return response.rows || [];
-    };
 
-    const posts = fetchPosts();
-
-    if (searchParams.sort === "desc") {
-      posts.reverse();
-    }
-
-    return (
+  return (
+    <div>
+      <h2>The Quotes Post in Episode Order</h2>
       <div>
-        <h2>Post List</h2>
-        <Link href="/posts?sort=asc">Sort ascending</Link> -{" "}
+        <Link href="/posts/?sort=asc">Sort ascending</Link> -{" "}
         <Link href="/posts?sort=desc">Sort descending</Link>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.id}>
-              <Link href={`/post/${post.id}`}>
-                <a>{post.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
-    );
-  };
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <span id="order_list">{post.quote} - {post.title}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

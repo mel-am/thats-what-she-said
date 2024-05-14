@@ -16,20 +16,22 @@ export default function RootLayout({ children }) {
       <body>
         <header>
           <nav>
-            <Link href="/home" className="links">
+            <Link href="/" className="links">
               Home
             </Link>
-            <Link href="./about">About</Link>
-            <Link href="./posts/all">All Posts</Link>
-            <Link href="./posts/new">Add new post</Link>
-            <Link href="./posts/edit">Edit post</Link>
+            <Link href="/about">About</Link>
+            <Link href="/posts/all">All Quotes</Link>
+            <Link href="/posts/new">Add new quote</Link>
+            <Link href="/posts?sort">Sort</Link>
           </nav>
         </header>
         {children}
-        {/* <footer>
+        
+        
+      </body>
+      {/* <footer>
           <p>&copy; 2024 Thats what she said</p>
         </footer> */}
-      </body>
     </html>
-);
+  );
 }
